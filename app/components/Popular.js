@@ -33,7 +33,7 @@ class Popular extends React.Component {
               {language}
             </li>
           )
-        }, this)}
+        })}
       </ul>
     )
   }

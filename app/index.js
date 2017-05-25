@@ -1,8 +1,8 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
+let React = require('react');
+let ReactDOM = require('react-dom');
 require('./index.css');
 
-var App = require('./components/App')
+let App = require('./components/App')
 
 ReactDOM.render(
   <App />,

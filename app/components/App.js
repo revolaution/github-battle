@@ -1,5 +1,5 @@
-var React = require('react');
-var Popular = require('./Popular')
+let React = require('react');
+let Popular = require('./Popular')
 
 class App extends React.Component {
   render() {

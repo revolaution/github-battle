@@ -1,6 +1,7 @@
 let React = require('react');
 let PlayerInput = require('./PlayerInput');
 let PlayerPreview = require('./PlayerPreview');
+let Link = require('react-router-dom').Link;
 
 class Battle extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class Battle extends React.Component {
   }
 
   render() {
+    let match = this.props.match;
     let playerOneName = this.state.playerOneName;
     let playerTwoName = this.state.playerTwoName;
     let playerOneImage = this.state.playerOneImage;
@@ -83,6 +85,18 @@ class Battle extends React.Component {
               />
           }
         </div>
+
+        {
+          playerOneImage && playerTwoImage &&
+          <Link
+            className='button'
+            to={{
+              pathname: match.url + '/results',
+              search: '?playerOneName=' + playerOneName + '&playerTwoName='+ playerTwoName
+            }}>
+              Battle
+          </Link>
+        }
       </div>
     );
   }

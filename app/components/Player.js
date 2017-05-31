@@ -1,6 +1,7 @@
 let React = require('react');
 let PropTypes = require('prop-types');
 let PlayerPreview = require('./PlayerPreview')
+let Profile = require('./Profile');
 
 const Player = (props) => {
   return (
@@ -9,6 +10,7 @@ const Player = (props) => {
       <h3 style={{textAlign: 'center'}}>
         Score: {props.score}
       </h3>
+      <Profile info={props.profile}/>
     </div>
   )
 }

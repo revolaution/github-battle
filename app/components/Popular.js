@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { fetchPopularRepos } from '../utils/api'
 import Loading from './Loading'
 
-const SelectLanguage = (props) => {
+const SelectLanguage = ({selectedLanguage, onSelect}) => {
   const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
 
   return (
@@ -11,8 +11,8 @@ const SelectLanguage = (props) => {
       {languages.map((language) => {
         return (
           <li
-            style={language == props.selectedLanguage ? {color: '#d0021b'} : null}
-            onClick={props.onSelect.bind(null, language)}
+            style={language == selectedLanguage ? {color: '#d0021b'} : null}
+            onClick={onSelect.bind(null, language)}
             key={language}
           >
             {language}
@@ -23,10 +23,10 @@ const SelectLanguage = (props) => {
   )
 }
 
-const RepoGrid = (props) => {
+const RepoGrid = ({repos}) => {
   return (
     <ul className='popular-list'>
-      {props.repos.map((repo, index) => {
+      {repos.map((repo, index) => {
         return (
           <li key={repo.name} className='popular-item'>
             <div className='popular-rank'>#{index + 1}</div>
@@ -35,7 +35,7 @@ const RepoGrid = (props) => {
                 <img
                   className='avatar'
                   src={repo.owner.avatar_url}
-                  alt={'Avatar for ' + repo.owner.login} />
+                  alt={`Avatar for ${repo.owner.login}`} />
               </li>
               <li><a href={repo.html_url}>{repo.name}</a></li>
               <li>@{repo.owner.login}</li>
@@ -83,7 +83,7 @@ class Popular extends React.Component {
       .then((repos) => {
         this.setState(() => {
           return {
-            repos: repos
+            repos
           }
         })
       })

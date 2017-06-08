@@ -21,8 +21,8 @@ class Battle extends React.Component {
     this.setState(() => {
       const newState = {};
 
-      newState[id + 'Name'] = username;
-      newState[id + 'Image'] = 'https://github.com/' + username + '.png?size=200';
+      newState[`${id}Name`] = username;
+      newState[`${id}Image`] = `https://github.com/${username}.png?size=200`;
       return newState;
     })
   }
@@ -31,8 +31,8 @@ class Battle extends React.Component {
     this.setState(() => {
       const newState = {};
 
-      newState[id + 'Name'] = '';
-      newState[id + 'Image'] = null;
+      newState[`${id}Name`] = '';
+      newState[`${id}Image`] = null;
       return newState;
     })
   }
@@ -94,8 +94,8 @@ class Battle extends React.Component {
           <Link
             className='button'
             to={{
-              pathname: match.url + '/results',
-              search: '?playerOneName=' + playerOneName + '&playerTwoName='+ playerTwoName
+              pathname: `${match.url}/results`,
+              search: `?playerOneName=${playerOneName}&playerTwoName=${playerTwoName}`
             }}>
               Battle
           </Link>

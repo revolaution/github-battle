@@ -1,8 +1,7 @@
-let axios = require('axios');
-
-let client_id = "YOUR_CLIENT_ID";
-let client_secret = "YOUR_SECRET_KEY";
-let params = "?client_id=" + client_id + "&client_secret" + client_secret;
+import axios from 'axios'
+const client_id = "YOUR_CLIENT_ID";
+const client_secret = "YOUR_SECRET_KEY";
+const params = "?client_id=" + client_id + "&client_secret" + client_secret;
 
 const getProfile = (username) => {
   return axios.get('https://api.github.com/users/' + username + params)
@@ -22,15 +21,15 @@ const getStarCount = (repos) => {
 }
 
 const calculateScore = (profile, repos) => {
-  let followers = profile.followers;
-  let totalStars = getStarCount(repos);
+  const followers = profile.followers;
+  const totalStars = getStarCount(repos);
 
   return (followers * 3) + totalStars;
 }
 
 const handleError = (error) => {
   console.warn(error);
-  return  null;
+  return null;
 }
 
 const getUserData = (player) => {
@@ -38,8 +37,8 @@ const getUserData = (player) => {
     getProfile(player),
     getRepos(player)
   ]).then((data) => {
-    let profile = data[0];
-    let repos = data[1];
+    const profile = data[0];
+    const repos = data[1];
 
     return {
       profile: profile,
@@ -54,18 +53,17 @@ const sortPlayers = (players) => {
   })
 }
 
-module.exports = {
-  battle: (players) => {
-    return axios.all(players.map(getUserData))
-      .then(sortPlayers)
-      .catch(handleError)
-  },
-  fetchPopularRepos: (language) => {
-    let encodedURI = window.encodeURI('https://api.github.com/search/repositories?q=stars:>1+language:' + language + '%sort=stars&order=desc&type=Repositories');
+export function battle (players) {
+  return axios.all(players.map(getUserData))
+    .then(sortPlayers)
+    .catch(handleError)
+}
 
-    return axios.get(encodedURI)
-      .then((response) => {
-        return response.data.items;
-      })
-  }
+export function fetchPopularRepos (language) {
+  const encodedURI = window.encodeURI('https://api.github.com/search/repositories?q=stars:>1+language:' + language + '%sort=stars&order=desc&type=Repositories');
+
+  return axios.get(encodedURI)
+    .then((response) => {
+      return response.data.items;
+    })
 }

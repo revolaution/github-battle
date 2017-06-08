@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import PlayerPreview from './PlayerPreview'
 
-const Profile = (props) => {
-  let info = props.info;
+const Profile = ({ info }) => {
   return (
     <PlayerPreview
       avatar={info.avatar_url}

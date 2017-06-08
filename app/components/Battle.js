@@ -19,7 +19,7 @@ class Battle extends React.Component {
 
   handleSubmit(id, username) {
     this.setState(() => {
-      let newState = {};
+      const newState = {};
 
       newState[id + 'Name'] = username;
       newState[id + 'Image'] = 'https://github.com/' + username + '.png?size=200';
@@ -29,7 +29,7 @@ class Battle extends React.Component {
 
   handleReset(id) {
     this.setState(() => {
-      let newState = {};
+      const newState = {};
 
       newState[id + 'Name'] = '';
       newState[id + 'Image'] = null;
@@ -38,11 +38,8 @@ class Battle extends React.Component {
   }
 
   render() {
-    let match = this.props.match;
-    let playerOneName = this.state.playerOneName;
-    let playerTwoName = this.state.playerTwoName;
-    let playerOneImage = this.state.playerOneImage;
-    let playerTwoImage = this.state.playerTwoImage;
+    const { match } = this.props;
+    const { playerOneName, playerTwoName, playerOneImage, playerTwoImage} = this.state;
 
     return (
       <div>

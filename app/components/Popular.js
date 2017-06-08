@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import api from '../utils/api'
+import { fetchPopularRepos } from '../utils/api'
 import Loading from './Loading'
 
 const SelectLanguage = (props) => {
-  let languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
+  const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
 
   return (
     <ul className='languages'>
@@ -79,7 +79,7 @@ class Popular extends React.Component {
       }
     });
 
-    api.fetchPopularRepos(language)
+    fetchPopularRepos(language)
       .then((repos) => {
         this.setState(() => {
           return {

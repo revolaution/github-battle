@@ -1,6 +1,6 @@
 import React from 'react'
 import queryString from 'query-string'
-import api from '../utils/api'
+import { battle } from '../utils/api'
 import { Link } from 'react-router-dom'
 import Player from './Player'
 import PlayerPreview from './PlayerPreview'
@@ -19,9 +19,9 @@ class Results extends React.Component {
   }
 
   componentDidMount() {
-    let players = queryString.parse(this.props.location.search);
+    const players = queryString.parse(this.props.location.search);
 
-    api.battle(
+    battle(
       [
         players.playerOneName,
         players.playerTwoName
@@ -48,10 +48,10 @@ class Results extends React.Component {
   }
 
   render() {
-    let error = this.state.error;
-    let winner = this.state.winner;
-    let loser = this.state.loser;
-    let loading = this.state.loading;
+    const error = this.state.error;
+    const winner = this.state.winner;
+    const loser = this.state.loser;
+    const loading = this.state.loading;
 
     if (loading == true) {
       return <Loading />

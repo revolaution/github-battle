@@ -1,7 +1,7 @@
-let React = require('react');
-let PropTypes = require('prop-types');
-let PlayerPreview = require('./PlayerPreview')
-let Profile = require('./Profile');
+import React from 'react'
+import PropTypes from 'prop-types';
+import PlayerPreview from './PlayerPreview'
+import Profile from './Profile'
 
 const Player = (props) => {
   return (
@@ -21,4 +21,4 @@ Player.propTypes = {
   profile: PropTypes.object.isRequired
 }
 
-module.exports = Player;
+export default Player

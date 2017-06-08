@@ -1,10 +1,10 @@
-let React = require('react');
-let queryString= require('query-string');
-let api = require('../utils/api');
-let Link = require('react-router-dom').Link;
-let Player = require('./Player');
-let PlayerPreview = require('./PlayerPreview');
-let Loading = require('./Loading');
+import React from 'react'
+import queryString from 'query-string'
+import api from '../utils/api'
+import { Link } from 'react-router-dom'
+import Player from './Player'
+import PlayerPreview from './PlayerPreview'
+import Loading from './Loading'
 
 class Results extends React.Component {
   constructor(props) {
@@ -86,4 +86,4 @@ class Results extends React.Component {
   }
 }
 
-module.exports = Results;
+export default Results

@@ -1,7 +1,7 @@
-let React = require('react');
-let PlayerInput = require('./PlayerInput');
-let PlayerPreview = require('./PlayerPreview');
-let Link = require('react-router-dom').Link;
+import React from 'react'
+import PlayerInput from './PlayerInput'
+import PlayerPreview from './PlayerPreview'
+import { Link } from 'react-router-dom'
 
 class Battle extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Battle extends React.Component {
 
   handleSubmit(id, username) {
     this.setState(() => {
-      var newState = {};
+      let newState = {};
 
       newState[id + 'Name'] = username;
       newState[id + 'Image'] = 'https://github.com/' + username + '.png?size=200';
@@ -29,7 +29,7 @@ class Battle extends React.Component {
 
   handleReset(id) {
     this.setState(() => {
-      var newState = {};
+      let newState = {};
 
       newState[id + 'Name'] = '';
       newState[id + 'Image'] = null;
@@ -108,4 +108,4 @@ class Battle extends React.Component {
   }
 }
 
-module.exports = Battle;
+export default Battle

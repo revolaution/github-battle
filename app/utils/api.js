@@ -22,8 +22,8 @@ const getStarCount = (repos) => {
 }
 
 const calculateScore = (profile, repos) => {
-  var followers = profile.followers;
-  var totalStars = getStarCount(repos);
+  let followers = profile.followers;
+  let totalStars = getStarCount(repos);
 
   return (followers * 3) + totalStars;
 }

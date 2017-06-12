@@ -53,10 +53,13 @@ const sortPlayers = (players) => {
   })
 }
 
-export function battle (players) {
-  return axios.all(players.map(getUserData))
-    .then(sortPlayers)
-    .catch(handleError)
+export async function battle (players) {
+  try {
+    const playerData = await Promise.all(players.map(getUserData))
+    return await sortPlayers(playerData);
+  } catch (error) {
+    handleError(error)
+  }
 }
 
 export function fetchPopularRepos (language) {

@@ -18,24 +18,23 @@ class Results extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const players = queryString.parse(this.props.location.search);
-
-    battle(
-      [
-        players.playerOneName,
-        players.playerTwoName
-      ]
-    ).then((results) => {
-      if(results === null) {
+  async componentDidMount() {
+    try {
+      const players = queryString.parse(this.props.location.search);
+      const results = await battle(
+        [
+          players.playerOneName,
+          players.playerTwoName
+        ]
+      )
+      if (results === null) {
         return this.setState(() => {
           return {
-            error: 'Looks like there was an error. Check that users exist on Github',
+            error: 'Looks like there was an error. Check that the players chosen exist on Github',
             loading: false
           }
         })
       }
-
       this.setState(() => {
         return {
           error: null,
@@ -44,7 +43,9 @@ class Results extends React.Component {
           loading: false
         }
       })
-    })
+    } catch (error) {
+      console.warn("An error occurred. Please check that user input is correct")
+    }
   }
 
   render() {
